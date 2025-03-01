@@ -4,6 +4,13 @@ import { Link } from "react-router-dom";
 
 const RecipeList = () => {
   const recipes = useRecipeStore((state) => state.recipes);
+  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
+  const filterRecipes = useRecipeStore((state) => state.filterRecipes);
+  const searchTerm = useRecipeStore((state) => state.searchTerm);
+
+  useEffect(() => {
+    filterRecipes();
+  }, [searchTerm, filterRecipes]);
 
   return (
     <div>
