@@ -13,6 +13,10 @@ function App() {
       </nav>
       <AddRecipeForm />
       <RecipeList />
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/recipe/:recipeId" element={<RecipeDetailsWrapper />} />
+      </Routes>
     </>
   );
 }
