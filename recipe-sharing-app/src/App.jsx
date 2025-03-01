@@ -1,13 +1,16 @@
-import { Routes, Router } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { useState } from "react";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
 import { Link } from "react-router-dom";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
+import FavoritesList from "./components/FavoritesList";
+import RecommendationsList from "./components/RecommendationsList";
 
 function App() {
-  const setRecipes = useRecipeStore((state) => state.setRecipes);
+  const setRecipes = useRecipeStore((state) => state.SetRecipes);
 
   useEffect(() => {
     setRecipes([
@@ -25,6 +28,8 @@ function App() {
       </nav>
       <SearchBar /> {}
       <AddRecipeForm />
+      <FavoritesList />
+      <RecommendationsList />
       <Routes>
         <Route path="/" element={<RecipeList />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetailsWrapper />} />
