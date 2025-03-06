@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik, Field, ErrorMessage } from "formik";
+import RegistrationForm from "./RegistrationForm";
 
 const initialValues = {
   name: "",
@@ -10,6 +11,7 @@ const initialValues = {
 function FormikForm() {
   const { values, handleBlur, handleChange, handleSubmit } = useFormik({
     initialValues,
+    validationSchema: { RegistrationForm },
     onSubmit: (values) => {
       console.log(values);
     },
