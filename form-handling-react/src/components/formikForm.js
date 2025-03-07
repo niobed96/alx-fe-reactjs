@@ -13,15 +13,15 @@ const initialValues = {
 };
 
 const RegistrationSchema = yup.object({
-  username: yup.string().min(4).required("Please Enter USername"),
+  username: yup.string().required("Please Enter USername").min(4),
   email: yup
     .string()
-    .email("Please Enter VAlid Email")
-    .required("Please Enter Your Email"),
+    .required("Please Enter Your Email")
+    .email("Please Enter VAlid Email"),
   password: yup
     .string()
-    .matches(passwordRegex, "Please Enter Valid Password")
-    .required("Please Enter Your password"),
+    .required("Please Enter Your password")
+    .matches(passwordRegex, "Please Enter Valid Password"),
 });
 
 function formikForm() {
