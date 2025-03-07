@@ -9,7 +9,6 @@ function RegistrationForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
   };
   const validateForm = () => {
     const newErrors = {};
@@ -26,6 +25,8 @@ function RegistrationForm() {
 
     return Object.keys(newErrors).lenght === 0;
   };
+
+  validateForm();
   return (
     <>
       <form onSubmit={handleSubmit}>
