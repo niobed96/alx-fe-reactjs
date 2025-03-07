@@ -13,7 +13,7 @@ function PostsComponent() {
   if (isLoading) {
     return <div>Post Loading...</div>;
   }
-  if (error) {
+  if (isError) {
     return <div>error fetching post:{error.message}</div>;
   }
   return (
