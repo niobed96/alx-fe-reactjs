@@ -12,14 +12,12 @@ const initialValues = {
   password: "",
 };
 
-const RegistrationSchema = yup.object({
-  username: yup.string().required("Please Enter USername").min(4),
-  email: yup
-    .string()
+const RegistrationSchema = Yup.object({
+  username: Yup.string().required("Please Enter USername").min(4),
+  email: Yup.string()
     .required("Please Enter Your Email")
     .email("Please Enter VAlid Email"),
-  password: yup
-    .string()
+  password: Yup.string()
     .required("Please Enter Your password")
     .matches(passwordRegex, "Please Enter Valid Password"),
 });
