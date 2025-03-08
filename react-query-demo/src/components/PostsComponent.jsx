@@ -9,7 +9,9 @@ function PostsComponent() {
     queryFn: fetchPosts,
     queryKey: ["posts"],
     cacheTime: 200000,
-    staletime: 30000,
+    staletime: 1000 * 60,
+    refetchOnWindowFocus: false,
+    keepPrevious,
   });
   if (isLoading) {
     return <div>Post Loading...</div>;
