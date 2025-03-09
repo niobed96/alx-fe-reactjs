@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+
 function LogIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -9,6 +11,8 @@ function LogIn() {
     e.preventDefault();
     if (username === "user" && password === "pass") {
       setRedirect(true);
+      const { isAuthenticated } = useAuth();
+      return isAuthenticated ? Profile : <Navigate to="/login" />;
     } else {
       alert("Invalid credentials");
     }
