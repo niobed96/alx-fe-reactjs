@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import Profile from "./components/Profile";
-import Blog from "./components/Blog";
+import Blog from "./components/BlogPost";
 import Home from "./components/Home";
 import ProfileDetails from "./components/ProfileDetails";
 import ProfileSettings from "./components/ProfileSettings";
@@ -30,7 +30,7 @@ function App() {
       )}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/blog/:id" element={<Blog />} />
+        <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/login" element={<LogIn />} />
         <Route
           path="/Profile"
