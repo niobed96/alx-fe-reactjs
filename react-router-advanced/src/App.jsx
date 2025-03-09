@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/Profile">Profile</Link>
+        <Link to="/profile">Profile</Link>
         <Link to="/blog">Blog</Link>
       </nav>
       {isAuthenticated ? (
@@ -33,7 +33,7 @@ function App() {
         <Route path="/blog/:id" element={<BlogPost />} />
         <Route path="/login" element={<LogIn />} />
         <Route
-          path="/Profile"
+          path="/profile"
           element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
         >
           <Route path="settings" element={<ProfileSettings />} />
