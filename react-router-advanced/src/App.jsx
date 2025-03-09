@@ -5,7 +5,7 @@ import Blog from "./components/BlogPost";
 import Home from "./components/Home";
 import ProfileDetails from "./components/ProfileDetails";
 import ProfileSettings from "./components/ProfileSettings";
-import LogIn from "./components/LogIn";
+import LogIn from "./components/ProtectedRoute.jsx";
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
