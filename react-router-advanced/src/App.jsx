@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import Profile from "./components/Profile";
 import Blog from "./components/Blog";
 import Home from "./components/Home";
@@ -17,7 +17,7 @@ function App() {
     setIsAuthenticated(false);
   };
   return (
-    <>
+    <BrowserRouter>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/Profile">Profile</Link>
@@ -40,7 +40,7 @@ function App() {
           <Route path="Details" element={<ProfileDetails />} />
         </Route>
       </Routes>
-    </>
+    </BrowserRouter>
   );
 }
 
