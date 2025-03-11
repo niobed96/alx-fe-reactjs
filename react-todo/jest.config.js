@@ -4,4 +4,5 @@ export default {
   moduleNameMapper: {
     "\\.(css|less|scss|sass)$": "identity-obj-proxy",
   },
+  testMatch: ["**/__tests__/**/*.test.js"],
 };

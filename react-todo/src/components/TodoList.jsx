@@ -1,22 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function TodoList() {
+const TodoList = () => {
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build a Todo App", completed: true },
+    { id: 2, text: "Build a Todo App", completed: false },
     { id: 3, text: "Write Tests", completed: false },
   ]);
   const [newTodo, setNewTodo] = useState("");
 
-  const addTodo = (e) => {
-    e.preventDefault();
-    if (!newTodo.trim()) return;
-    const todo = {
-      id: Date.now(), // Simple unique ID
-      text: newTodo,
-      completed: false,
-    };
-    setTodos([...todos, todo]);
+  const addTodo = () => {
+    if (newTodo.trim() === "") return;
+    setTodos([
+      ...todos,
+      { id: todos.length + 1, text: newTodo, completed: false },
+    ]);
     setNewTodo("");
   };
 
@@ -34,41 +31,39 @@ function TodoList() {
 
   return (
     <div>
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new todo"
-          data-testid="todo-input"
-        />
-        <button type="submit" data-testid="add-button">
-          Add
-        </button>
-      </form>
       <ul data-testid="todo-list">
         {todos.map((todo) => (
           <li
             key={todo.id}
-            style={{ textDecoration: todo.completed ? "line-through" : "none" }}
+            data-testid={`todo-item-${todo.id}`}
+            onClick={() => toggleTodo(todo.id)}
+            style={{
+              textDecoration: todo.completed ? "line-through" : "none",
+            }}
           >
-            <span
-              onClick={() => toggleTodo(todo.id)}
-              data-testid={`todo-item-${todo.id}`}
-            >
-              {todo.text}
-            </span>
+            {todo.text}
             <button
-              onClick={() => deleteTodo(todo.id)}
               data-testid={`delete-button-${todo.id}`}
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteTodo(todo.id);
+              }}
             >
               Delete
             </button>
           </li>
         ))}
       </ul>
+      <input
+        data-testid="todo-input"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button data-testid="add-button" onClick={addTodo}>
+        Add Todo
+      </button>
     </div>
   );
-}
+};
 
 export default TodoList;
