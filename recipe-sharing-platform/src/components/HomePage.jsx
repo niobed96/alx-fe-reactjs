@@ -14,7 +14,7 @@ function HomePage() {
           <h1 className="text-3xl text-green-800 font-semibold text-center">
             Recipe collection
           </h1>
-          <div className="md:grid grid-cols-3 flex flex-col my-10 gap-5">
+          <div className="md:grid grid-cols-2 sm:grid-cols-1 my-10 gap-5">
             {recipes.length > 0 ? (
               recipes.map((recipe) => (
                 <div
