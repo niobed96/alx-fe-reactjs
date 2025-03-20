@@ -6,10 +6,9 @@ function AddRecipeForm() {
   const [step, setStep] = useState("");
 
   //error state
-  const [error, setError] = useState({});
-  //Handle form
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [errors, setErrors] = useState({});
+  //Validate
+  const validate = () => {
     const newErrors = {};
     if (!title) {
       newErrors.title = "Title is required";
@@ -24,7 +23,14 @@ function AddRecipeForm() {
     if (stepsArray.length < 1) {
       newErrors.step = "Please Provide atleast 1 step";
     }
-    setError(newErrors);
+    return newErrors;
+  };
+  //Handle form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const validationErrors = validate();
+    setErrors(validationErrors);
 
     if (Object.keys(newErrors).length === 0) {
       const newRecipe = {
@@ -46,7 +52,7 @@ function AddRecipeForm() {
   return (
     <>
       <div>
-        <div className="m-20 items-center justify-center sm:w-1/3 md:w-1/2  m-auto">
+        <div className="m-20 items-center justify-center sm:w-full md:w-1/2 lg:1/3  m-auto">
           <form onSubmit={handleSubmit} className="p-12 shadow-lg py-20">
             <h1 className="text-3xl text-center font-bold mb-10">
               Submit Recipe
