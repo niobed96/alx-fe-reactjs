@@ -12,9 +12,18 @@ function HomePage() {
     <>
       <div>
         <div className="m-20">
-          <h1 className="text-3xl text-green-800 font-semibold text-center">
+          <h1 className="text-3xl text-green-800 font-semibold text-center mb-16">
             Recipe collection
           </h1>
+          <div className="items-center justify-center">
+            <Link
+              to="/add-recipe"
+              className="bg-black text-white py-2 px-4 text-lg font-medium rounded-lg items-center"
+            >
+              Add Recipe
+            </Link>
+          </div>
+
           <div className="lg:grid grid-cols-3 md:grid-cols-2 sm:grid-cols-1 my-10 gap-5">
             {recipes.length > 0 ? (
               recipes.map((recipe) => (
