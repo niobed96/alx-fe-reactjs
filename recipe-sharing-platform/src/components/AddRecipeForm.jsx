@@ -8,7 +8,7 @@ function AddRecipeForm() {
   //error state
   const [error, setError] = useState({});
   //Handle form
-  const handleForm = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = {};
     if (!title) {
@@ -46,8 +46,8 @@ function AddRecipeForm() {
   return (
     <>
       <div>
-        <div className="m-20 items-center justify-center w-1/2 m-auto">
-          <form onSubmit={handleForm} className="p-12 shadow-lg py-20">
+        <div className="m-20 items-center justify-center sm:w-1/3 md:w-1/2  m-auto">
+          <form onSubmit={handleSubmit} className="p-12 shadow-lg py-20">
             <h1 className="text-3xl text-center font-bold mb-10">
               Submit Recipe
             </h1>
