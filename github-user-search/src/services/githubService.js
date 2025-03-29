@@ -19,3 +19,27 @@ export const fetchUserData = async (username) => {
     throw error;
   }
 };
+
+export const searchUsersAdvanced = async ({
+  query = "",
+  location = "",
+  minRepos = "",
+}) => {
+  try {
+    let searchQuery = query;
+    if (location) searchQuery += ` location:${location}`;
+    if (minRepos) searchQuery += ` repos:>=${minRepos}`;
+
+    const response = await api.get("/search/users", {
+      params: {
+        q: searchQuery.trim(),
+        per_page: 10, // Limit results per page
+        page: 1, // Initial page
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error searching users:", error);
+    throw error;
+  }
+};
