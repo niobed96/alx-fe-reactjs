@@ -18,6 +18,12 @@ function Search() {
 
     try {
       const data = await searchUsersAdvanced({ query, location, minRepos });
+      const detailedUsers = await Promise.all(
+        data.items.map(async (user) => {
+          const userDetails = await fetchUserData(user.login);
+          return userDetails;
+        })
+      );
       setUsers(newSearch ? data.items : [...users, ...data.items]);
       setHasMore(data.total_count > page * 10);
       if (newSearch) setPage(1);
