@@ -11,7 +11,6 @@ function SearchBar({ onSearchResults }) {
       const results = await searchUsers(query);
       onSearchResults(results.items); // Pass results to parent component
     } catch (error) {
-      console.error("Search failed:", error);
       onSearchResults([]); // Pass empty array on error
     }
   };
