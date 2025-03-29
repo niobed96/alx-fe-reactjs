@@ -15,7 +15,7 @@ function HomePage() {
           <h1 className="text-3xl text-green-800 font-semibold text-center mb-16">
             Recipe collection
           </h1>
-          <div className="items-center justify-center">
+          <div className="cmder justify-center">
             <Link
               to="/add-recipe"
               className="bg-black text-white py-2 px-4 text-lg font-medium rounded-lg items-center"
