@@ -30,13 +30,22 @@ export const searchUsersAdvanced = async ({
     if (location) searchQuery += ` location:${location}`;
     if (minRepos) searchQuery += ` repos:>=${minRepos}`;
 
-    const response = await api.get("/search/users", {
-      params: {
-        q: searchQuery.trim(),
-        per_page: 10, // Limit results per page
-        page: 1, // Initial page
-      },
-    });
+    const response = await axios.get(
+      "https://api.github.com/search/users?q=" +
+        encodeURIComponent(searchQuery.trim()),
+      {
+        headers: {
+          Authorization: import.meta.env.VITE_APP_GITHUB_API_KEY
+            ? `token ${import.meta.env.VITE_APP_GITHUB_API_KEY}`
+            : undefined,
+          Accept: "application/vnd.github.v3+json",
+        },
+        params: {
+          per_page: 10,
+          page: 1,
+        },
+      }
+    );
     return response.data;
   } catch (error) {
     console.error("Error searching users:", error);
